@@ -1,0 +1,61 @@
+string minusculas(string c){
+
+    string s;
+    int d;
+    for(unsigned i = 0; i < c.length(); i++){
+         if(c[i] >= 'A' && c[i] <= 'Z'){
+            s += tolower(c[i]);
+        }
+        else if (c[i] == (char) 0xC3) {
+            if( c[i+1] == char(0xA1)){
+                d = 0xA1 - 0x61;
+                s += char(c[i+1] - d);
+            }
+            else if( c[i+1] == char(0xA9) || c[i+1] == char(0xAD) || c[i+1] == char(0xB3)){
+                d = 0xA9 - 0x65;
+                s += char(c[i+1] - d);
+            }
+            else if( c[i+1] == char(0XBA)) {
+                d = 0xBA - 0x75;
+                s += char(c[i+1] - d);
+            }
+            else if( c[i+1] == char(0X81)) {
+                d = 0x81 - 0x61;
+                s += char(c[i+1] - d);
+            }
+            else if( c[i+1] == char(0x89) || c[i+1] == char(0x8D) || c[i+1] == char(0x93)){
+                d = 0x89 - 0x65;
+                s += char(c[i+1] - d);
+            }
+             else if( c[i+1] == char(0X9A)) {
+                d = 0x9A - 0x75;
+                s += char(c[i+1] - d);
+            }
+             else if( c[i+1] == char(0XBC)) {
+                d = 0xBC - 0x75;
+                s += char(c[i+1] - d);
+            }
+            else if( c[i+1] == char(0X9C)) {
+                d = 0x9C - 0x75;
+                s += char(c[i+1] - d);
+            }
+            else if(c[i+1] == char(0x91)){
+                s += char(0xC3);
+                s += char(0xB1);
+            }
+            else{
+                s += c[i+1];
+            }
+            i++;
+        }
+        
+        else{
+            s += c[i];
+            s += c[i + 1];
+                }
+
+    }
+
+    return s;
+
+}
